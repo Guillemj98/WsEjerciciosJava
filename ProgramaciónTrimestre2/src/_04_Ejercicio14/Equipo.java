@@ -41,12 +41,18 @@ public class Equipo {
 	}
 
 	public int cuantosJugadoresHay() {
-		return this.listaJugadores.length;
+		int contador =0;
+		for (String j : listaJugadores) {
+			if(j!=null) {
+				contador++;
+			}
+		}
+		return contador;
 	}
 
 	public boolean suficientesJugadores() {
 		boolean esApto = false;
-		if (this.listaJugadores.length > 7) {
+		if (cuantosJugadoresHay() >= 7) {
 			esApto = true;
 		}
 		return esApto;
@@ -55,9 +61,16 @@ public class Equipo {
 	public boolean laCadenaEsIgual(Equipo cadena) {
 		boolean esIgual = false;
 		for (int i = 0; i < this.listaJugadores.length; i++) {
-			if (this.listaJugadores[i].equalsIgnoreCase(cadena.listaJugadores[i])) {
-				esIgual = true;
+			esIgual = false;
+			for (int j = 0; j < cadena.listaJugadores.length; j++) {
+				if (this.listaJugadores[i].equalsIgnoreCase(cadena.listaJugadores[j])) {
+					esIgual = true;
+				}
 			}
+			if (esIgual == false) {
+				break;
+			}
+
 		}
 		return esIgual;
 	}

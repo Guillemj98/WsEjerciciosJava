@@ -5,21 +5,36 @@ import java.util.Arrays;
 public class Empresa {
 	String nombre;
 	String nif;
+<<<<<<< HEAD
 	Trabajador []listaTrabajadores;
 	public Empresa() {
 		super();
 	}
+=======
+	Trabajador [] listaTrabajadores;
+
+	public Empresa() {
+		super();
+	}
+
+>>>>>>> 53915097a02eb9700935b54767b95722954dc47d
 	public Empresa(String nombre, String nif, Trabajador[] listaTrabajadores) {
 		super();
 		this.nombre = nombre;
 		this.nif = nif;
 		this.listaTrabajadores = listaTrabajadores;
 	}
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> 53915097a02eb9700935b54767b95722954dc47d
 	@Override
 	public String toString() {
 		return "Empresa [nombre=" + nombre + ", nif=" + nif + ", listaTrabajadores="
 				+ Arrays.toString(listaTrabajadores) + "]";
 	}
+<<<<<<< HEAD
 	public void mostrarDatosTrabajadores() {
 		for(Trabajador t : listaTrabajadores) {
 			System.out.println(t.toString());
@@ -28,6 +43,23 @@ public class Empresa {
 	public boolean existeTrabajdorDni() {
 		boolean siExiste = false;
 		return siExiste;
+=======
+
+	public void mostrarDatosTrabajadores() {
+		for(Trabajador t : this.listaTrabajadores) {
+			System.out.println(t.dni);
+			System.out.println(t.nombre);
+			System.out.println(t.salario);
+		}
+	}
+	public boolean existeElTrabajador(String dni) {
+		for(Trabajador t: listaTrabajadores) {
+			if(t.dni.equalsIgnoreCase(dni));
+			return true;
+		}
+		return false;
+			
+>>>>>>> 53915097a02eb9700935b54767b95722954dc47d
 	}
 	public int cuantosTrabajadoresHay(Trabajador trabajador) {
 		int contador =0;
@@ -93,5 +125,10 @@ public class Empresa {
 	}
 	
 	
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 53915097a02eb9700935b54767b95722954dc47d
 
 }

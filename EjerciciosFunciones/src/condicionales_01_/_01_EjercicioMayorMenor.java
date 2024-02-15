@@ -1,4 +1,4 @@
-package condicionales_01;
+package condicionales_01_;
 
 public class _01_EjercicioMayorMenor {
 

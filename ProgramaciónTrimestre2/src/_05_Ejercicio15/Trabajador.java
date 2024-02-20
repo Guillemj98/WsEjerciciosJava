@@ -4,20 +4,25 @@ public class Trabajador {
 	String nombre;
 	String dni;
 	double salario;
+
+	public Trabajador() {
+		super();
+	}
+
 	public Trabajador(String nombre, String dni, double salario) {
 		super();
 		this.nombre = nombre;
 		this.dni = dni;
 		this.salario = salario;
 	}
-	public Trabajador() {
-		super();
-	}
+
 	@Override
 	public String toString() {
 		return "Trabajador [nombre=" + nombre + ", dni=" + dni + ", salario=" + salario + "]";
 	}
-	
+
+
+
 	public boolean esValidoDni() {
 		String regex = "\\d{8}[A-HJ-NP-TV-Z]";
 		if(dni.matches(regex) && dni.length() == 9) {
@@ -47,5 +52,6 @@ public class Trabajador {
 		}
 		return esIgual;
 	}
+
 
 }

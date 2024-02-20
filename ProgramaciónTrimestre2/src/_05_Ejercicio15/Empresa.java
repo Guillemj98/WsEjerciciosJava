@@ -5,11 +5,14 @@ import java.util.Arrays;
 public class Empresa {
 	String nombre;
 	String nif;
-	Trabajador [] listaTrabajadores;
 
+	Trabajador []listaTrabajadores;
 	public Empresa() {
 		super();
 	}
+
+	
+
 
 	public Empresa(String nombre, String nif, Trabajador[] listaTrabajadores) {
 		super();
@@ -17,7 +20,9 @@ public class Empresa {
 		this.nif = nif;
 		this.listaTrabajadores = listaTrabajadores;
 	}
+
 	
+
 
 	@Override
 	public String toString() {
@@ -26,12 +31,16 @@ public class Empresa {
 	}
 
 	public void mostrarDatosTrabajadores() {
-		for(Trabajador t : this.listaTrabajadores) {
-			System.out.println(t.dni);
-			System.out.println(t.nombre);
-			System.out.println(t.salario);
+		for(Trabajador t : listaTrabajadores) {
+			System.out.println(t.toString());
 		}
 	}
+	public boolean existeTrabajdorDni() {
+		boolean siExiste = false;
+		return siExiste;
+	}
+
+	
 	public boolean existeElTrabajador(String dni) {
 		for(Trabajador t: listaTrabajadores) {
 			if(t.dni.equalsIgnoreCase(dni));
@@ -39,8 +48,9 @@ public class Empresa {
 		}
 		return false;
 			
+
 	}
-	public int cuantosTrabajadoresHay(Trabajador trabajador) {
+	public int cuantosTrabajadoresHay() {
 		int contador =0;
 		for(Trabajador t : this.listaTrabajadores) {
 			if(t!=null) {
@@ -50,6 +60,16 @@ public class Empresa {
 	}
 		return contador;
 }
+	public double cuantoSeGastaLaEmpresa() {
+		double suma =0;
+		for(Trabajador t : listaTrabajadores) {
+			if(t !=null) {
+				suma+=t.salario;
+			}
+		}
+		return suma;
+	}
+	
 	public int cuantosTrabajadoresGanasMas3000() {
 		int contador = 0;
 		for(Trabajador t: listaTrabajadores) {
@@ -70,29 +90,24 @@ public class Empresa {
 		
 		return contador;
 	}
-	public int cuantosTrabajadoresGanasMas(Trabajador trabajador) {
+	public int cuantosTrabajadoresGanasMas(double salario) {
 		int contador = 0;
 		for(Trabajador t: listaTrabajadores) {
-			if(t.salario>trabajador.salario) {
+			if(t.salario>salario) {
 				contador ++;
 			}
 		}
 		
 		return contador;
 	}
-	public boolean cuantosTrabajadoresDniValido(Trabajador trabajador) {
-		int contador =0;
-		for(Trabajador t: listaTrabajadores) {
-			if(t.esValidoDni() == true) {
-				contador++;
+
+	public boolean cuantosTrabajadoresDniValido() {
+		for (Trabajador t : listaTrabajadores) {
+			if (t.esValidoDni() == false) {
+				return false;
 			}
 		}
-		if(contador == listaTrabajadores.length) {
-			return true;
-		}
-		
-		
-		return false;
+		return true;
 	}
 	public boolean esIgual(Empresa empresa) {
 		boolean esIgual = false;
@@ -104,7 +119,6 @@ public class Empresa {
 	}
 	
 	
-	
-	
+
 
 }

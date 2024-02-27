@@ -6,7 +6,7 @@ public class mainOrdenador {
 
 	public static void main(String[] args) {
 		Procesador pR1 = new Procesador("Intel", "i9", 8, 300.0);
-		TarjetaGrafica tg = new TarjetaGrafica("Nvidia", "RTX 4070", 5, 1050.99, null);
+		TarjetaGrafica tg = new TarjetaGrafica("Nvidia", "RTX 4070", 5, 1050.99, new RAM("Nvidia", 16, 0));
 		PlacaBase pb = new PlacaBase("MSI", 267.99, "ZTX300");
 		RAM r = new RAM("HyperX", 16, 299.99);
 		RAM r2 = new RAM("HyperX", 16, 299.99);

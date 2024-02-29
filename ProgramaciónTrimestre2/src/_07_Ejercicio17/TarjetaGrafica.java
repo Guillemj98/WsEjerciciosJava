@@ -5,7 +5,7 @@ public class TarjetaGrafica {
 	private String modelo;
 	private int nucleoCUDA;
 	private double precio;
-	RAM ram;
+	private RAM ram;
 	public TarjetaGrafica() {
 		super();
 	}

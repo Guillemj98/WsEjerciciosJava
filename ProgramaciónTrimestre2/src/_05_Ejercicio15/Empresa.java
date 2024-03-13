@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Empresa {
 	String nombre;
 	String nif;
-
 	Trabajador []listaTrabajadores;
 	public Empresa() {
 		super();

@@ -5,12 +5,23 @@ public class Muniemon {
 	private int vida;
 	private int ataque;
 	private int defensa;
+	private int velocidad;
 	private TipoMuniemon tipoMuneimon;
+
+
+
 
 	@Override
 	public String toString() {
-		return String.format("Nombre: %s\nVida: %d\nAtaque: %d\nDefensa: %d\nTipo de Muneimon: %s", nombre, vida,
-				ataque, defensa, tipoMuneimon);
+		return "Muniemon [nombre=" + nombre + ", vida=" + vida + ", ataque=" + ataque + ", defensa=" + defensa
+				+ ", velocidad=" + velocidad + ", tipoMuneimon=" + tipoMuneimon + "]";
+	}
+	public int getVelocidad() {
+		return velocidad;
+	}
+	
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
 	}
 
 	public String getNombre() {

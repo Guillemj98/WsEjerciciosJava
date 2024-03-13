@@ -1,101 +1,99 @@
 package _08_Ejercicio18;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class MainMuniemon {
+	
 	public static void main(String[] args) {
-		Muniemon m = new Muniemon();
-		Muniemon m2 = new Muniemon();
+		ArrayList<Muniemon>listaMuniemones = new ArrayList<Muniemon>();	
 		Scanner sc = new Scanner(System.in);
-		menuJuego(sc,m,m2);
+		menuJuego(sc, listaMuniemones);
 		
 		
 
 	}
-	public static void menuJuego(Scanner sc, Muniemon m, Muniemon m2) {
+	public static void menuJuego(Scanner sc, ArrayList<Muniemon>listaMuniemons) {
 		int opcion = 0;
 		do {
 		System.out.println("--------------------------------------------------");
 		System.out.println("---BIENVENIDO A MUNIEMON---");
-		System.out.println("A CONTINUACION TE MOSTRARE UN MENÚ DE OPCIONES");
+		System.out.println("|--Aqui tienes el menú de opciones--|");
 		System.out.println("|Pulsa 1 para dar de alta a un Muniemon|");
-		System.out.println("|Pulsa 2 para dar de alta a tu segundo Muniemon|");
-		System.out.println("|Pulsa 3 para mostrar las caracteristicas de tu Muniemon|");
-		System.out.println("|Pulsa 4 para mostrar las caracteristicas de tu segundo Muniemon|");
-		System.out.println("|Pulsa 5 para atacar con el primer Muniemon a tu segundo Muniemon|");
-		System.out.println("|Pulsa 6 para atacar con el segundo Muniemon a tu primer Muniemon|");
-		System.out.println("|Pulsa 7 para salir del programa|");
+		System.out.println("|Pulsa 2 Para mostrar los Munioemones creados|");
+		System.out.println("|Pulsa 3 para iniciar el combate entre muniones|");
+		System.out.println("|Pulsa 4 salir del programa|");
 		System.out.println("----------MUNIEMON HAZTE CON ALGUNO--------------");
 		System.out.println("Selecciona una opción");
 		opcion = sc.nextInt();
 		switch(opcion) {
 		case 1:
-			System.out.println("Has elegido crear tu primer Muñoncito");
-			System.out.println("Que te va a ayudar en tu aventura de Muñon");
-			crearMuniemon(sc, m);
+			if(listaMuniemons.size()!=2) {
+				System.out.println("Has elegido crear tu  Muñoncito");
+				System.out.println("Que te va a ayudar en tu aventura de Muñón");
+				crearMuniemon(sc,listaMuniemons);	
+			}else {
+				System.out.println("Ya no puedes pasar");
+			}
 			
 			break;
+			
 		case 2:
-			System.out.println("Has elegido crear tu primer Muñoncito");
-			System.out.println("Que te va a ayudar en tu aventura de Muñon");
-			crearMuniemon(sc, m2);
-			
+			System.out.println("Has elegido motrar todos los muniones creados");
+			System.out.println("----------------");
+			mostrarMuniones(listaMuniemons);
 			break;
+			
 		case 3:
-			System.out.println("================");
-			System.out.println(m.toString());
+			System.out.println("========Empieza el combate========");
+			System.out.println();
 			System.out.println("================");
 			break;
 		case 4:
-			System.out.println("================");
-			System.out.println(m2.toString());
-			System.out.println("================");
-			break;
-		case 5:
-			System.out.println("|-------       ---------|");
-			m.ataqueMunion(m2);
-			System.out.println("|-------       ---------|");
-			
-			break;
-		case 6:
-			System.out.println("|-------       ---------|");
-			m2.ataqueMunion(m);
-			System.out.println("|-------       ---------|");
-			
-			break;
-		case 7:
-		
 			System.out.println("Hasta luego entrenador Muñón");
 			break;
+
 		default:
 			System.err.println("Te has equivocado como buen Muñon");
 		}
 		}
-		while(opcion !=7);
+		while(opcion !=4);
 	}
-	public static void crearMuniemon(Scanner sc, Muniemon m) {
+	// Lo que podemos hacer es devolver el uñon creado y lo añadimos arriba
+	// el muñon creado a la lista
+	public static void crearMuniemon(Scanner sc,ArrayList<Muniemon>listaMuniemons ) {
+		Muniemon m = new Muniemon();
 		System.out.println("Elige el nombre de tu Muñoncito");
 		sc.nextLine();
 		m.setNombre(sc.nextLine());
 		
-		System.out.println("Elige la vida de tu Muñon");
+		System.out.println("Elige la vida de tu Muñón");
 		m.setVida(sc.nextInt());
 		
-		System.out.println("Elige el ataque de tu Muñon");
+		System.out.println("Elige el ataque de tu Muñón");
 		m.setAtaque(sc.nextInt());
 		
-		System.out.println("Elige la defensa de tu Muñon");
+		System.out.println("Elige la defensa de tu Muñón");
 		m.setDefensa(sc.nextInt());
 		
-		System.out.println("Estos son los tipos disponibles de tu Muñon");
+		System.out.println("Elige la velocidad de tu Muñón");
+		m.setVelocidad(sc.nextInt());
+		
+		System.out.println("Estos son los tipos disponibles de tu Muñón");
 		int i =0;
 		for(TipoMuniemon tm : TipoMuniemon.values() ) {
 			System.out.println("[" + i +"]" + tm);
 			i++;
 		}
-		System.out.println("Elige una opcion");
+		System.out.println("Elige una opción");
 		int opcion = sc.nextInt();
 		m.setTipoMuneimon(TipoMuniemon.values()[opcion]);
 		
+		listaMuniemons.add(m);
 		
+	}
+	public static void mostrarMuniones(ArrayList<Muniemon>listaMuniemons) {
+		for(Muniemon m : listaMuniemons) {
+			System.out.println(m);
+		}
 	}
 	
 	

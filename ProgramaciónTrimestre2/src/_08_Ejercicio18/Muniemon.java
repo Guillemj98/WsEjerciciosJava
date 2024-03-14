@@ -2,9 +2,9 @@ package _08_Ejercicio18;
 
 public class Muniemon {
 	private String nombre;
-	private int vida;
-	private int ataque;
-	private int defensa;
+	private double vida;
+	private double ataque;
+	private double defensa;
 	private int velocidad;
 	private TipoMuniemon tipoMuneimon;
 
@@ -32,27 +32,27 @@ public class Muniemon {
 		this.nombre = nombre;
 	}
 
-	public int getVida() {
+	public double getVida() {
 		return vida;
 	}
 
-	public void setVida(int vida) {
+	public void setVida(double vida) {
 		this.vida = vida;
 	}
 
-	public int getAtaque() {
+	public double getAtaque() {
 		return ataque;
 	}
 
-	public void setAtaque(int ataque) {
+	public void setAtaque(double ataque) {
 		this.ataque = ataque;
 	}
 
-	public int getDefensa() {
+	public double getDefensa() {
 		return defensa;
 	}
 
-	public void setDefensa(int defensa) {
+	public void setDefensa(double defensa) {
 		this.defensa = defensa;
 	}
 
@@ -65,9 +65,8 @@ public class Muniemon {
 	}
 
 	public void ataqueMunion(Muniemon m) {
-		int ataqueFinal = 0;
+		double ataqueFinal = 0;
 		ataqueFinal = this.ataque - m.getDefensa();
-
 		if (this.vida <= 0) {
 			System.out.println("No puedes atacar al muñón" + " porque estás debilitado ");
 
@@ -90,6 +89,43 @@ public class Muniemon {
 			System.out.println("La vida de " + m.getNombre() + " : " + m.getVida() + "HP, no puede pelear.");
 		}
 
+	}
+	public double comprobacionTipoMunion(Muniemon m) {
+		double ataque = this.ataque;
+		switch (this.tipoMuneimon) {
+		case FUEGO:
+			switch (m.getTipoMuneimon()) {
+			case PLANTA:
+				 return ataque = this.ataque * 1.5;
+				
+			case AGUA:
+				return ataque = this.ataque * 0.5;
+				
+			}		
+			break;
+		case AGUA:
+			switch (m.getTipoMuneimon()) {
+			case FUEGO:
+				return ataque = this.ataque * 1.5;
+				
+			case PLANTA:
+				return ataque = this.ataque * 0.5;
+				
+			}
+			
+			break;
+		case PLANTA:
+			switch (m.getTipoMuneimon()) {
+			case AGUA:
+				return ataque = this.ataque * 1.5;	
+				
+			case FUEGO:
+				return ataque = this.ataque * 0.5;
+				
+			}
+	
+		}
+		return ataque;
 	}
 
 }

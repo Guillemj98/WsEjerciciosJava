@@ -13,6 +13,7 @@ public class MainMuniemon {
 	}
 	public static void menuJuego(Scanner sc, ArrayList<Muniemon>listaMuniemons) {
 		int opcion = 0;
+		Combate c = new Combate(null, null);
 		do {
 		System.out.println("--------------------------------------------------");
 		System.out.println("---BIENVENIDO A MUNIEMON---");
@@ -44,7 +45,9 @@ public class MainMuniemon {
 			
 		case 3:
 			System.out.println("========Empieza el combate========");
-			System.out.println();
+			c.setM1(listaMuniemons.get(0));
+			c.setM2(listaMuniemons.get(1));
+			c.empezarCombate();
 			System.out.println("================");
 			break;
 		case 4:
@@ -66,13 +69,13 @@ public class MainMuniemon {
 		m.setNombre(sc.nextLine());
 		
 		System.out.println("Elige la vida de tu Muñón");
-		m.setVida(sc.nextInt());
+		m.setVida(sc.nextDouble());
 		
 		System.out.println("Elige el ataque de tu Muñón");
-		m.setAtaque(sc.nextInt());
+		m.setAtaque(sc.nextDouble());
 		
 		System.out.println("Elige la defensa de tu Muñón");
-		m.setDefensa(sc.nextInt());
+		m.setDefensa(sc.nextDouble());
 		
 		System.out.println("Elige la velocidad de tu Muñón");
 		m.setVelocidad(sc.nextInt());

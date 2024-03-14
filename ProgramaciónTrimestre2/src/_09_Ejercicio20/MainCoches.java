@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainCoches {
-	Scanner sc ;
-	ArrayList<Coche>listaCoches ;
+	private Scanner sc ;
+	private ArrayList<Coche>listaCoches ;
 
 	public static void main(String[] args) {
 		MainCoches mc = new MainCoches();
@@ -22,10 +22,10 @@ public class MainCoches {
 	}
 	public void arrancarPrograma() {
 		sc = new Scanner(System.in);
-		listaCoches = new ArrayList<Coche>();
-		
+		listaCoches = new ArrayList<Coche>();	
 		int opcion =0;
 	
+		
 		do {
 			menuCoche();
 			System.out.println("Introduce la opcion que deseas");

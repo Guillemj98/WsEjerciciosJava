@@ -44,7 +44,7 @@ public class MainMuniemon {
 			break;
 			
 		case 3:
-			System.out.println("========Empieza el combate========");
+			System.out.println("====================");
 			c.setM1(listaMuniemons.get(0));
 			c.setM2(listaMuniemons.get(1));
 			c.empezarCombate();

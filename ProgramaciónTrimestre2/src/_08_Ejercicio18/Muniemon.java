@@ -67,6 +67,7 @@ public class Muniemon {
 	public void ataqueMunion(Muniemon m) {
 		double ataqueFinal = 0;
 		ataqueFinal = this.ataque - m.getDefensa();
+		ataqueFinal =comprobacionTipoMunion(m);
 		if (this.vida <= 0) {
 			System.out.println("No puedes atacar al muñón" + " porque estás debilitado ");
 
@@ -75,6 +76,7 @@ public class Muniemon {
 				System.out.println("Tu ataque es muy débil y le quitas 0 de vida");
 			} else if (ataqueFinal > 0) {
 				System.out.println("Tu ataque es efectivo");
+				
 				m.setVida(m.getVida() - ataqueFinal);
 				if (m.getVida() > 0) {
 					System.out.println(this.nombre + " le quita " + ataqueFinal + " a " + m.getNombre());

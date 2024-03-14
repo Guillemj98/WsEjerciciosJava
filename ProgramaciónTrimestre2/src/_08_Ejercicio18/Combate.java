@@ -41,6 +41,9 @@ public class Combate {
 			System.out.println("Pulse enter para continuar el combate");
 			sc.nextLine();
 			this.m2.ataqueMunion(m1);
+			System.out.println("Pulse enter para continuar");
+			sc.nextLine();
+			
 		
 		}while(this.m1.getVida()>0 && this.m2.getVida()>0) ;
 		}	
@@ -50,6 +53,9 @@ public class Combate {
 				System.out.println("Pulse enter para continuar el combate");
 				sc.nextLine();
 				this.m1.ataqueMunion(m2);
+				System.out.println("Pulse enter para continuar");
+				sc.nextLine();
+				
 			}while(this.m1.getVida()>0 && this.m2.getVida()>0);
 			}
 	

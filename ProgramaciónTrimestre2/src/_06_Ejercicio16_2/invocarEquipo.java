@@ -11,7 +11,7 @@ public class invocarEquipo {
 		ArrayList <Equipo> arrayEquipos = new ArrayList<Equipo>();
 		Equipo e1 = new Equipo("Madrid", new ArrayList <String> ());
 		Equipo e2 = new Equipo("Madrid", new ArrayList <String> ());
-		Equipo e3 = new Equipo();
+		Equipo e3 = new Equipo("Madrid",new ArrayList <String> () );
 
 		arrayEquipos.add(e1);
 		arrayEquipos.add(e2);

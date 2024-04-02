@@ -1,4 +1,4 @@
-package _09_Ejercicio20;
+ package _09_Ejercicio20;
 
 import java.util.ArrayList;
 import java.util.Scanner;

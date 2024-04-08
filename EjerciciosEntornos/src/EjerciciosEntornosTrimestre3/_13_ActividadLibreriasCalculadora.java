@@ -9,22 +9,15 @@ public class _13_ActividadLibreriasCalculadora {
 
 	public static void main(String[] args) {
 
-		menu();
+		menuCosa();
 
 	}
 
-	public static void menu() {
+	public static void menuCosa() {
 		int opcion = 0;
 		sc = new Scanner(System.in);
 		do {
-			
-			System.out.println("==============================");
-			System.out.println("Para sumar pulse 1");
-			System.out.println("Para restar pulse 2");
-			System.out.println("Para dividir pulse 3");
-			System.out.println("Para multiplicar pulse 4");
-			System.out.println("Pulse 5 para salir");
-			System.out.println("==============================");
+			menu();
 			opcion = sc.nextInt();
 			if (opcion == 5) {
 				System.out.println("Saliste del programa");
@@ -57,6 +50,15 @@ public class _13_ActividadLibreriasCalculadora {
 			}
 		} while (opcion != 5);
 
+	}
+	public static void menu() {
+		System.out.println("==============================");
+		System.out.println("Para sumar pulse 1");
+		System.out.println("Para restar pulse 2");
+		System.out.println("Para dividir pulse 3");
+		System.out.println("Para multiplicar pulse 4");
+		System.out.println("Pulse 5 para salir");
+		System.out.println("==============================");
 	}
 
 }

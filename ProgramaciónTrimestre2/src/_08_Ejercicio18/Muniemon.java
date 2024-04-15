@@ -90,7 +90,6 @@ public class Muniemon {
 		else {
 			System.out.println("La vida de " + m.getNombre() + " : " + m.getVida() + "HP, no puede pelear.");
 		}
-
 	}
 	public double comprobacionTipoMunion(Muniemon m) {
 		double ataque = this.ataque;
@@ -98,11 +97,9 @@ public class Muniemon {
 		case FUEGO:
 			switch (m.getTipoMuneimon()) {
 			case PLANTA:
-				 return ataque = this.ataque * 1.5;
-				
+				 return ataque = this.ataque * 1.5;				
 			case AGUA:
-				return ataque = this.ataque * 0.5;
-				
+				return ataque = this.ataque * 0.5;			
 			}		
 			break;
 		case AGUA:
@@ -111,10 +108,8 @@ public class Muniemon {
 				return ataque = this.ataque * 1.5;
 				
 			case PLANTA:
-				return ataque = this.ataque * 0.5;
-				
-			}
-			
+				return ataque = this.ataque * 0.5;				
+			}			
 			break;
 		case PLANTA:
 			switch (m.getTipoMuneimon()) {
@@ -122,12 +117,9 @@ public class Muniemon {
 				return ataque = this.ataque * 1.5;	
 				
 			case FUEGO:
-				return ataque = this.ataque * 0.5;
-				
-			}
-	
+				return ataque = this.ataque * 0.5;				
+			}	
 		}
 		return ataque;
 	}
-
 }

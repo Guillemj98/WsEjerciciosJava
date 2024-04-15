@@ -6,13 +6,9 @@ import matemáticas.Matematicas;
 
 public class _13_ActividadLibreriasCalculadora {
 	static Scanner sc;
-
 	public static void main(String[] args) {
-
 		menuCosa();
-
 	}
-
 	public static void menuCosa() {
 		int opcion = 0;
 		sc = new Scanner(System.in);
@@ -21,12 +17,13 @@ public class _13_ActividadLibreriasCalculadora {
 			opcion = sc.nextInt();
 			if (opcion == 5) {
 				System.out.println("Saliste del programa");
-			} else {
+				break;
+				
+			}else {
 				System.out.println("Escoge el primer numero");
 				int numero1 = sc.nextInt();
 				System.out.println("Escoge el segundo numero");
 				int numero2 = sc.nextInt();
-
 				switch (opcion) {
 				case 1:
 					System.out.println("Has elegido sumar");

@@ -1,4 +1,4 @@
-package _08_Ejercicio18;
+	package _08_Ejercicio18;
 
 import java.util.Scanner;
 

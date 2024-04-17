@@ -1,79 +1,159 @@
 package Actividad22Herencia;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MainEmpresa {
+	public static Scanner sc ;
 	public static void main(String[] args) {
-		Programador programador1 = new Programador();
-		Programador programador2 = new Programador();
-		Programador programador3 = new Programador();
-		JefeProyecto jf1 = new JefeProyecto();
-		JefeProyecto jf2 = new JefeProyecto();
-		JefeProyecto jf3 = new JefeProyecto();
-		Director d1 = new Director();
-		Director d2 = new Director();
-		
-		
-		programador1.setDNI("546798D");
-		programador1.setNombre("Juan");
-		programador1.setSueldoBase(1500);
-		
-		programador2.setDNI("5436798G");
-		programador2.setNombre("Manuel");
-		programador2.setSueldoBase(1550);
-		
-		programador3.setDNI("5486798C");
-		programador3.setNombre("Pepe");
-		programador3.setSueldoBase(1000);
-		
-		jf1.setDNI("9046798D");
-		jf1.setNombre("Felix");
-		jf1.setSueldoBase(1800);
-		
-		jf2.setDNI("9146798D");
-		jf2.setNombre("Piero");
-		jf2.setSueldoBase(1800);
-		
-		jf3.setDNI("92546798D");
-		jf3.setNombre("Carlos");
-		jf3.setSueldoBase(1750);
-		
-		d1.setDNI("00546798C");
-		d1.setNombre("Felipe");
-		d1.setSueldoBase(2000);
-		
-		d2.setDNI("00546798H");
-		d2.setNombre("Daniel");
-		d2.setSueldoBase(2000);
-		
-		ArrayList<Empleado>listaEmpleadosDirector = new ArrayList<Empleado>();
-		d1.setListaEmpleados(listaEmpleadosDirector);
-		
-		d1.getListaEmpleados().add(programador3);
-		d1.getListaEmpleados().add(programador2);
-		d1.getListaEmpleados().add(jf2);
-		
-		d2.setListaEmpleados(listaEmpleadosDirector);
-		d2.getListaEmpleados().add(programador1);
-		d2.getListaEmpleados().add(d1);
-		d2.getListaEmpleados().add(jf2);
-		
-		
-		ArrayList<Empleado>listaEmpleados = new ArrayList<Empleado>();
-		listaEmpleados.add(programador1);
-		listaEmpleados.add(programador2);
-		listaEmpleados.add(programador3);
-		listaEmpleados.add(jf1);
-		listaEmpleados.add(jf2);
-		listaEmpleados.add(jf3);
-		listaEmpleados.add(d1);
-		listaEmpleados.add(d2);
-		for(Empleado e : listaEmpleados) {
-			System.out.println(e.calcularSalario());
+			menuCompleto();
+	}
+	public static void menu() {
+		System.out.println("<--Elige una de las opciones-->");
+		System.out.println("Pulsa 1:--Dar de alta a un empleado--");
+		System.out.println("Pulsa 2:--Mostrar empleados de la empresa--");
+		System.out.println("Pulsa 3:--Calcular el salario de los trabajadores--");
+		System.out.println("Pulsa 4:--Calcular costes de la empresa--");
+		System.out.println("Pulsa 5:--Salir del programa--");
+	}
+	public static void menuCompleto() {
+		sc = new Scanner(System.in);
+		int opcion = 0;
+		ArrayList<Empleado> listaGeneral = new ArrayList<Empleado>();
+		do {
+		menu();
+		opcion = sc.nextInt();
+		switch (opcion) {
+		case 1:
+			int opcion2 =0;
+			do {
+				menuCrearEmpleado();
+				opcion2 = sc.nextInt();
+				switch (opcion2) {
+				case 1:
+					listaGeneral.add(crearProgramador());
+					break;
+				case 2:
+					listaGeneral.add(crearJefeProyecto());
+					break;
+				case 3:
+					listaGeneral.add(crearDirector(listaGeneral));
+					break;
+				case 4:
+					System.out.println("Salir el programa");
+
+				default:
+					System.out.println("Opcion incorrecta");
+					break;
+				}
+				}while(opcion2 !=4);
+			break;
+		case 2:
+			System.out.println("Aqui estan todos tus empleados");
+			for(Empleado e : listaGeneral) {
+				System.out.println(e);
+			}
+			break;
+		case 3:
+			System.out.println("Aqui estan todos los empleados");
+			int contador =0;
+			do {
+			for(Empleado e : listaGeneral) {
+				System.out.println("[" + contador++ + "] " + e);
+			}
+			System.out.println("Introduce 0 para salir");		
+			opcion = sc.nextInt();
+			if(opcion !=-1) {
+				System.out.println(listaGeneral.get(opcion).calcularSalario()); 
+			}
+			
+			}while(opcion !=-1);		
+			break;
+		case 4:
+			mostraGastoEmpresa(listaGeneral);	
+			break;
+		case 5: 
+			break;
+
+		default:
+			System.out.println("Opcion incorrecta");
+			break;
 		}
-		
-		
+		}while(opcion !=5);
+	}
+	public static void mostraGastoEmpresa(ArrayList<Empleado> listaGeneral) {
+		double dineroTotal =0;
+		for (Empleado e : listaGeneral) {
+			System.out.println(e.calcularSalario());
+			dineroTotal+=e.calcularSalario();
+		}
+		System.out.println("El gasto total de la empresa es: " + dineroTotal);
 		
 	}
-
+	public static void menuCrearEmpleado() {
+		System.out.println("Que tipo de trabajador quieres crear");
+		System.out.println("Elige 1 para crear un PROGRAMADOR");
+		System.out.println("Elige 2 para crear un JEFE DE PROYECTO");
+		System.out.println("Elige 3 para crear un DIRECTOR");
+		System.out.println("Elige 4 para SALIR");
+	}
+	public static Programador crearProgramador() {
+		sc = new Scanner(System.in);
+		Programador programador = new Programador();
+		
+		System.out.println("Elige el DNI del empleado");
+		programador.setDNI(sc.nextLine());
+		System.out.println("Pon el nombre del empleado");
+		programador.setNombre(sc.nextLine());
+		System.out.println("Pon lo que va a cobrar el empleado");
+		programador.setSueldoBase(sc.nextDouble());
+		return programador;
+		
+			
+	}
+	public static JefeProyecto crearJefeProyecto() {
+		sc = new Scanner(System.in);
+		JefeProyecto jf = new JefeProyecto();
+		
+		System.out.println("Elige el DNI del empleado");
+		jf.setDNI(sc.nextLine());
+		System.out.println("Pon el nombre del empleado");
+		jf.setNombre(sc.nextLine());
+		System.out.println("Pon lo que va a cobrar el empleado");
+		jf.setSueldoBase(sc.nextDouble());
+		System.out.println("Introduce la prima del jefe de proyecto");
+		jf.setIncentivos(sc.nextDouble()); 	
+		return jf;
+		
+	}
+	public static Director crearDirector(ArrayList<Empleado> listaGeneral) {
+		sc = new Scanner(System.in);
+		Director dc = new Director();
+		
+		System.out.println("Elige el DNI del empleado");
+		dc.setDNI(sc.nextLine());
+		System.out.println("Pon el nombre del empleado");
+		dc.setNombre(sc.nextLine());
+		System.out.println("Pon lo que va a cobrar el empleado");
+		dc.setSueldoBase(sc.nextDouble());
+		ArrayList<Empleado>listaEmpleadosDirector = new ArrayList<Empleado>();
+		dc.setListaEmpleados(listaEmpleadosDirector);
+		int opcion =0;
+		do {
+		System.out.println("Elige tus empleados");		
+		int contador =0;	
+		for(Empleado e : listaGeneral) {
+			System.out.println("[" + contador++ + "] " + e);
+		}
+		System.out.println("Introduce -1 para salir");		
+		opcion = sc.nextInt();
+		if(opcion != -1) {
+			dc.getListaEmpleados().add(listaGeneral.get(opcion));
+		}
+		
+		}while(opcion !=-1);	
+		return dc;
+		
+	}
+	
 }

@@ -8,9 +8,9 @@ public class JefeProyecto extends Empleado {
 	@Override
 	public double calcularSalario() {
 		double salarioTotal = 0;
-		salarioTotal = this.getSueldoBase()+ this.incentivos;
+		salarioTotal = this.getSueldoBase()+ this.incentivos ;
 		
-		return salarioTotal;		
+		return salarioTotal ;		
 	}
 
 	public double getIncentivos() {

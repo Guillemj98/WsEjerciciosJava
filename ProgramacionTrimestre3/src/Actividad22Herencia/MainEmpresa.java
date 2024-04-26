@@ -86,7 +86,7 @@ public class MainEmpresa {
 	}
 
 	public static Programador crearProgramador() {
-		sc = new Scanner(System.in);
+		
 		Programador programador = new Programador();
 		System.out.println("Elige el DNI del empleado");
 		programador.setDNI(sc.nextLine());
@@ -99,7 +99,7 @@ public class MainEmpresa {
 	}
 
 	public static JefeProyecto crearJefeProyecto() {
-		sc = new Scanner(System.in);
+		
 		JefeProyecto jf = new JefeProyecto();
 		System.out.println("Elige el DNI del empleado");
 		jf.setDNI(sc.nextLine());
@@ -114,7 +114,7 @@ public class MainEmpresa {
 	}
 
 	public static Director crearDirector(ArrayList<Empleado> listaGeneral) {
-		sc = new Scanner(System.in);
+		
 		Director dc = new Director();
 		System.out.println("Elige el DNI del empleado");
 		dc.setDNI(sc.nextLine());

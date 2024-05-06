@@ -90,23 +90,23 @@ public class MainPersona {
 	public static void menuCompleto() {
 		sc = new Scanner(System.in);
 		listaPersonas = new HashMap<>();
-		int opcion = 0;
+		String opcion = "";
 		do {
 			menu();
 			System.out.println("Introduce la opcion");
 			
-			opcion = sc.nextInt();
+			opcion = sc.nextLine();
 			switch (opcion) {
-			case 1:
+			case "1":
 				crearPersona();
 				break;
-			case 2:
+			case "2":
 				mostraPersonas();
 				break;
-			case 3:
+			case "3":
 				buscarPersonas();				
 				break;
-			case 4:
+			case "4":
 				System.out.println("Salir del programa");
 				break;
 			default:
@@ -114,7 +114,7 @@ public class MainPersona {
 				break;
 			}
 			
-		}while(opcion!=4);
+		}while(!opcion.equals("4"));
 	}
 
 }

@@ -69,8 +69,9 @@ public class MainEmpresa {
 		System.out.println("Pulsa 1 --- Despido Procedente");
 		System.out.println("Pulsa 2 --- Despido Improcedente");
 		System.out.println("Elige que tipo de despido");
-		String sOpcion ="";
+		
 		int iOpcion = 0;
+		String sOpcion ="";
 		sOpcion = sc.nextLine().trim();
 		
 		iOpcion = Integer.parseInt(sOpcion);
@@ -88,10 +89,14 @@ public class MainEmpresa {
 	private void despidoProcedente() {
 		System.out.println("Despido procedente");
 		int opcion1 = 0;
+		String sOpcion1 = "";
 		do {
 			mostrarListaEmpleados();		
 			System.out.println("Introduce -1 para salir");
-			opcion1 = sc.nextInt();
+			
+			sOpcion1 = sc.nextLine().trim();
+			
+			opcion1 = Integer.parseInt(sOpcion1);
 			if (opcion1 != -1) {
 				System.out.println(listaEmpleadosEmpresa.get(opcion1).calcularDespidoProcedente());
 			}
@@ -101,12 +106,17 @@ public class MainEmpresa {
 	private void despidoImprocedente() {
 		System.out.println("Despido IMMPROCEDENTE");
 		System.out.println("Cuantos años ha estado en la empresa");
-		int iAniosEmpresa = sc.nextInt();
+		String sAniosEmpresa = sc.nextLine().trim();
+		
+		int iAniosEmpresa = Integer.parseInt(sAniosEmpresa);
 		int opcion2 = 0;
+		String sOpcion2 = "";
 		do {
 			mostrarListaEmpleados();
 			System.out.println("Introduce -1 para salir");
-			opcion2 = sc.nextInt();
+			sOpcion2 = sc.nextLine().trim();
+			
+			opcion2 = Integer.parseInt(sOpcion2);
 			if (opcion2 != -1) {
 				System.out.println(listaEmpleadosEmpresa.get(opcion2).calcularDespidoImprocedente(iAniosEmpresa));
 			}
@@ -134,6 +144,7 @@ public class MainEmpresa {
 		do {
 			menuEmpleados();
 			sOpcion = sc.nextLine().trim();
+			
 			try {
 			opcion = Integer.parseInt(sOpcion);
 			switch (opcion) {
@@ -181,7 +192,7 @@ public class MainEmpresa {
 			if(opcion != -1) {
 				d.getListaEmpleados().add(listaEmpleadosEmpresa.get(opcion));
 			}
-		}while(opcion !=-1);
+		}while(opcion != -1);
 		
 		return d;
 		

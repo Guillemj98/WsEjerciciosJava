@@ -6,7 +6,7 @@ public class MainBatalla {
 
 	public static void main(String[] args) {
 		Personaje p1 = new Guerrero();
-		Personaje p2 = new Mago();
+		Personaje p2 = new Curandero();
 		Arma a1 = new Espada();
 		Arma a2 = new Hechizo();
 		Combate c = new Combate(p1, p2);
@@ -20,7 +20,7 @@ public class MainBatalla {
 		p1.setVida(20);
 		p1.setArma(a1);
 		
-		p2.setNombre("Gandalf");
+		p2.setNombre("Piero");
 		p2.setVida(20);
 		p2.setArma(a2);
 		

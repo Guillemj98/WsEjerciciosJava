@@ -184,11 +184,13 @@ public class MainEmpresa {
 		d.setSalarioBase(sc.nextDouble());
 		ArrayList<Empleado>listaEmpleadosDirector = new ArrayList<>();
 		d.setListaEmpleados(listaEmpleadosDirector);
+		String sOpcion= null;
 		int opcion =0;
 		do {
 			mostrarListaEmpleados();
 			System.out.println("Introduce -1 para Salir");
-			opcion = sc.nextInt();
+			sOpcion = sc.nextLine();
+			opcion = Integer.parseInt(sOpcion);
 			if(opcion != -1) {
 				d.getListaEmpleados().add(listaEmpleadosEmpresa.get(opcion));
 			}

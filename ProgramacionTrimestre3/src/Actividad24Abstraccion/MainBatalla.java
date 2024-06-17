@@ -12,6 +12,7 @@ public class MainBatalla {
 		Combate c = new Combate(p1, p2);
 		a1.setDaño(5);
 		a1.setNombre("Hacedora de Viudas");
+	
 		
 		a2.setDaño(3);
 		a2.setNombre("Bola de Fuegoo");

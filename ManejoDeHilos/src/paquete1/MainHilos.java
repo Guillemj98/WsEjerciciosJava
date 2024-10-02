@@ -27,6 +27,9 @@ public class MainHilos {
 		
 		
 		
+		// Esto lo que va a hacer es que se ejecute de manera secuencial 
+		// los hilos por lo tanto va a ir mas lento que si lo hacemos 
+		// con el .start(); para que haga las cosas a la vez.
 		System.out.println("-------------------------");
 		ht1.run();
 		ht2.run();

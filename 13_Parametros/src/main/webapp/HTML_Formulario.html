@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+    <h1>Formulario de registro</h1>
+ 
+    <form action="ServletFormulario" method="post">
+       
+        <fieldset>
+            <legend>Datos personales:</legend>
+          
+            <label for="nombre">Nombre: </label>
+           
+            <input id="nombre" type="text" name="nombre" value="Tony Stark" />
+            <br/>
+            <label for="edad">Edad: </label>
+            <input id="edad" type="text" name="edad" />
+            <br/>
+           
+            <label for="pass">Password: </label>
+            <input id="pass" type="password" name="pass" />
+           
+            <br/>
+            <input id="identificador" type="hidden" name="identificador" value="123"/>
+            <br/>
+            
+            <label for="estado_civil">Estado civil: </label>
+            <br />	
+            <input type="radio" name="estado_civil" value="S" />Soltero<br />	
+            <input type="radio" name="estado_civil" value="C" />Casado<br />	
+            <input type="radio" name="estado_civil" value="V" checked/>Viudo<br />	
+            <input type="radio" name="estado_civil" value="D" />Divorciado<br />	
+
+         
+            <br/>
+            <label for="hobbies">Hobbies: </label>
+            <br />	
+            <input type="checkbox" name="hobbies" value="M" checked/>Música<br />	
+            <input type="checkbox" name="hobbies" value="L" checked/>Lectura<br />	
+            <input type="checkbox" name="hobbies" value="D" />Deportes<br />	
+            <input type="checkbox" name="hobbies" value="V" />Videojuegos<br />	
+            <br/>
+            <!--
+                <select><option>, La etiqueta <select> representa una lista desplegable de opciones 
+                definidas por medio de etiquetas <option>.
+                
+                El texto contenido en cada <option> es el valor visible para el usuario.
+                
+                El valor que se enviará al servidor es el que contiene el atributo value de la opción 
+                seleccionada por el usuario (LUN, MAR, MIE, JUE o VIE).
+
+                Por defecto se marcará el primer "option" pero tambien podemos usar el atributo 
+                "selected" para marcar el que nosotros queramos.
+
+                El comportamiento por defecto es muy parecido al del type="radio", solo se puede elegir
+                uno. Aunque tambien es posible permitir varias opciones con el atributo "multiple"
+                (no suele ser muy habitual)
+            -->
+            <label for="dia_nacimiento">Escoja el día en que nació: </label>
+            <select name="dia_nacimiento">
+                <option value="MON">Lunes</option>
+                <option value="TUE">Martes</option>
+                <option value="WED" selected>Miércoles</option>
+                <option value="THU">Jueves</option>
+                <option value="FRI">Viernes</option>
+                <option value="SAT">Sábado</option>
+                <option value="SUN">Domingo</option>
+            </select>
+            <br />
+            <!--
+                <textarea>, Se representa como una caja de texto multilínea. Tiene los siguientes 
+                atributos:
+
+                    1) rows: número de filas visibles del campo.
+
+                    2) cols: ancho del campo, numero de caracteres por línea.
+
+                    3) readonly: solo lectura. (este tambien se puede encontrar en los text y en otros)
+            -->
+            <br/>
+            <label for="observaciones">Observaciones: </label>
+            <br />	
+            <!-- Para evitar que el usuario pueda redimensinar el textarea podemos usar
+            CSS. Para ello podemos poner el atributo "resize: none;" -->
+            <textarea style="resize: none;" rows="5" cols="80" name="observaciones"></textarea>
+
+            <!--
+                Un checkbox también es común para opciones simples de marcar o desmarcar
+            -->
+            <br/>
+            <br/>
+            <label for="terminos">¿Acepta los terminos de uso? </label>
+            <br/>	
+            He leido y acepto los terminos de uso <input type="checkbox" name="terminos" value="Y" />
+            <br/>	
+            <!--
+                input type="submit", Se representa como un botón y cuando el usuario hace clic en él, 
+                se realiza la petición HTTP al programa de servidor especificado en el atributo action.
+            -->
+            <br/>	
+            <input type="submit" value="Enviar datos" />
+            <!--
+                input type="reset", Se representa como un botón y cuando el usuario hace clic en él, 
+                se deja el formulario en su estado inicial (normalmente vacio)
+            -->
+            <input type="reset" value="Limpiar formulario" />
+
+            <!-- 
+                También hay botones normales para dar otro tipo de funcionalidad
+                Al estar este botón en el formulario, su comportamiento por defecto sería
+                la misma que la del "input type='submit'""
+            -->
+            <button>Boton normal</button>
+        </fieldset>
+    </form>
+</body>
+</html>

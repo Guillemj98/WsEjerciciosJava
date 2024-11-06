@@ -18,9 +18,9 @@ public class GestorServidor {
 			return String.valueOf(numero1 - numero2);
 			
 		case "C":
-			return String.valueOf(numero1 / numero2);
-		case "D":
 			return String.valueOf(numero1 * numero2);
+		case "D":
+			return String.valueOf(numero1 / numero2);
 
 		
 		}

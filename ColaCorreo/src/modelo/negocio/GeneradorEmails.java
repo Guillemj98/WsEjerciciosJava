@@ -72,7 +72,7 @@ public class GeneradorEmails {
 		listaNombresDestinatario.add("sefirot@ejemplo.com");
 		listaNombresDestinatario.add("squall@ejemplo.com");
 		listaNombresDestinatario.add("tifa@ejemplo.com");
-		listaNombresDestinatario.add("pikachu@gmail.com,");
+		listaNombresDestinatario.add("pikachu@gmail.com");
 		listaNombresDestinatario.add("zack@ejemplo.com");
 		listaNombresDestinatario.add("barret@ejemplo.com");
 	

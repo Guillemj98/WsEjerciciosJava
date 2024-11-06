@@ -16,7 +16,11 @@ public class ProductorEmails extends Thread {
 		GeneradorEmails ge = new GeneradorEmails();
 		for( int i =1; i <=10; i++) {
 			Email email = ge.generarEmail();
-			System.out.println(nombre + "el id del email es: " + email.getId());
+			System.out.println("================================");
+			System.out.println("👤 Usuario: " + nombre);
+			System.out.println("📧 ID del email: " + email.getId());
+			System.out.println("================================");
+			
 			cola.AddEmail(email);
 
             try {

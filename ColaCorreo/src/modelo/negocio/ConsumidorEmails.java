@@ -16,7 +16,7 @@ public class ConsumidorEmails extends Thread {
 	public void run () {
 		for(int i = 1; i<=10;i++) {
 			Email email = cola.getEmail();
-			System.out.println(nombre + "ha consumido el email: " + email);
+			System.out.println("📨 Consumidor: " + nombre + " | Email procesado: " + email);
 		}
 	}
 

@@ -1,5 +1,7 @@
 package modelo.entidad;
 
+import java.util.Objects;
+
 public class Email {
 	private int id;
 	private String destinatario;
@@ -38,8 +40,30 @@ public class Email {
 	}
 	@Override
 	public String toString() {
-		return "Email [id=" + id + ", destinatario=" + destinatario + ", remitente=" + remitente + ", asunto=" + asunto
-				+ ", cuerpoMensaje=" + cuerpoMensaje + "]";
+	    return "Email {" +
+	           "\n   ID: " + id +
+	           "\n   Destinatario: " + destinatario +
+	           "\n   Remitente: " + remitente +
+	           "\n   Asunto: " + asunto +
+	           "\n   Cuerpo del Mensaje: " + cuerpoMensaje +
+	           "\n}";
 	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(destinatario);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Email other = (Email) obj;
+		return Objects.equals(destinatario, other.destinatario);
+	}
+	
+	
 
 }

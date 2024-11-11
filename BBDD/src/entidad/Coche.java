@@ -11,6 +11,14 @@ public class Coche {
 	
 	
 	
+	public Coche(int id, String marca, String modelo, String tipoMotor, double km) {
+		super();
+		this.id = id;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.tipoMotor = tipoMotor;
+		this.km = km;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, km, marca, modelo, tipoMotor);

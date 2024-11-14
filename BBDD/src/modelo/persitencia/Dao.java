@@ -41,5 +41,13 @@ public class Dao {
 			
 		}
 	}
+	public void darDeBajaPorId(Coche coche)throws SQLException{
+		String query = "DELETE FROM coches WHERE ID =?";
+		try(Connection conn = conectarBaseDeDatos();
+			PreparedStatement stmt = conn.prepareStatement(query)){
+			int id = 0;
+			stmt.setInt(1, id);
+		}
+	}
 
 }

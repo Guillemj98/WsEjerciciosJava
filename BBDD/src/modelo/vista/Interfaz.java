@@ -1,6 +1,7 @@
 package modelo.vista;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import entidad.Coche;
@@ -65,7 +66,7 @@ public class Interfaz {
 				break;
 			case 2:
 				System.out.println("🗑️  Dar de baja coche por ID");
-				darDeBajaCoche();
+				darDeBajaCocheID();
 				break;
 			case 3:
 				System.out.println("✏️  Modificar coche por ID");
@@ -98,27 +99,83 @@ public class Interfaz {
 	}
 
 	private static void listarCoches() {
+		Gestor gestor = Gestor.getInstance();
+		ArrayList<Coche>listaCoches = gestor.listarCoches();
+		if(listaCoches.isEmpty()) {
+			System.out.println("No hay coches en el array");
+			
+		}else {
+			for (Coche coche: listaCoches) {
+				System.out.println(coche);
+			}
+		}
 		
 		
 	}
 
 	private static void buscarCochePorMarca() {
-		
+		Gestor gestor = Gestor.getInstance();
+		System.out.println("Introduce la marca");
+		String marca = sc.nextLine();
+		gestor.buscarCocheMarca(marca);
 		
 	}
 
 	private static void buscarCochePorId() {
-		
+		Gestor gestor = Gestor.getInstance();
+		System.out.println("Introduce el ID");
+		int id = sc.nextInt();
+		Coche coche = gestor.buscarCocheId(id);
+		System.out.println(coche.toString());
 		
 	}
 
 	private static void modificarCochePorId() {
-		
-		
+	    Gestor gestor = Gestor.getInstance();
+	    
+	    System.out.print("Introduce el ID del coche a modificar: ");
+	    int id = sc.nextInt();
+	    sc.nextLine();  
+	    
+	    Coche coche = gestor.buscarCocheId(id);
+	    
+	    if (coche != null) {
+	        
+	        System.out.println("Coche encontrado: " + coche);  
+	        
+	        System.out.print("Introduce la nueva marca: ");
+	        String marca = sc.nextLine();
+	        
+	        System.out.print("Introduce el nuevo modelo: ");
+	        String modelo = sc.nextLine();
+	        
+	        System.out.print("Introduce el nuevo tipo de motor: ");
+	        String tipoMotor = sc.nextLine();
+	        
+	        System.out.print("Introduce el nuevo número de kilómetros: ");
+	        double km = sc.nextDouble();
+	        
+	       
+	        try {
+	            gestor.modificarCoche(id, marca, modelo, tipoMotor, km);
+	            System.out.println("Coche actualizado con éxito.");
+	        } catch (SQLException e) {
+	            System.out.println("Error al actualizar el coche.");
+	            e.printStackTrace();
+	        }
+	    } else {
+	        System.out.println("No se ha encontrado el coche con ID: " + id);
+	    }
 	}
 
-	private static void darDeBajaCoche() {
+
+
+	private static void darDeBajaCocheID() {
+		Gestor gestor = Gestor.getInstance();
+		System.out.println("Introduce el ID");
+		int id = sc.nextInt();
 		
+		gestor.darDebajaCoche(id);
 		
 	}
 

@@ -1,6 +1,7 @@
 package modelo.negocio;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import entidad.Coche;
 import modelo.persitencia.Dao;
@@ -47,8 +48,59 @@ public class Gestor {
 		if(coche.getKm() < 0 ) {
 			System.out.println("Los Km no pueden ser negativos");
 		}
+	
+	}
+	public void darDebajaCoche(int id) {
+		Dao dao = Dao.getInstance();
+		try {
+			dao.darDeBajaPorId(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void modificarCoche(int id, String marca, String modelo, String tipoMotor, double km) throws SQLException {
+		Dao dao = Dao.getInstance();
+		Coche coche = dao.buscarCochePorId(id);
+		if (coche != null) {
+	        coche.setMarca(marca);
+	        coche.setModelo(modelo);
+	        coche.setTipoMotor(tipoMotor);
+	        coche.setKm(km);
+	        
+	        dao.modificarCochePorId(coche);  
+	        System.out.println("Coche actualizado con éxito.");
+	    } else {
+	        System.out.println("Coche no encontrado con ID: " + id);
+	    }
+	}
+	public Coche buscarCocheId(int id) {
+		Dao dao = Dao.getInstance();
 		
-		
+		try {
+			return dao.buscarCochePorId(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void buscarCocheMarca(String marca) {
+		Dao dao = Dao.getInstance();
+		try {
+			dao.buscarCochePorMarca(marca);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public ArrayList<Coche>listarCoches(){
+		Dao dao = Dao.getInstance();
+		try {
+			return dao.listarCoches();
+			
+		}catch (Exception e) {
+			
+		}
+		return new ArrayList<>();
 		
 	}
 

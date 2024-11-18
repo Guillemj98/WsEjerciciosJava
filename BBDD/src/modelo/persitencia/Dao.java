@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entidad.Coche;
+import modelo.persistencia.interfaz.DaoInterfaz;
 
-public class Dao {
+public class Dao implements DaoInterfaz{
 	private static Dao instance = null;
 	private final String url ="jdbc:mysql://localhost:3306/db_coches";
 	private final String user = "root";
@@ -30,7 +31,7 @@ public class Dao {
 		return DriverManager.getConnection(url, user, pass);
 	}
 	
-	public void insertarCoches(Coche coche)throws SQLException {
+	public void insertarCoches(Coche coche)  {
 		String query = "INSERT INTO coches (id, marca, modelo, tipoMotor, kilometros)VALUES(?,?,?,?,?)";
 		
 		try(Connection conn = conectarBaseDeDatos();
@@ -42,9 +43,13 @@ public class Dao {
 			stmt.setDouble(5, coche.getKm());
 			
 			
+		}catch(SQLException e ) {
+			System.out.println("Error al borrar el cliente");
+			System.out.println(e.getMessage());
 		}
+		
 	}
-	public void darDeBajaPorId(int id)throws SQLException{
+	public void darDeBajaPorId(int id) {
 		String query = "DELETE FROM coches WHERE ID =?";
 		try(Connection conn = conectarBaseDeDatos();
 			PreparedStatement stmt = conn.prepareStatement(query)){
@@ -56,7 +61,7 @@ public class Dao {
 			System.out.println(e.getMessage());
 		}
 	}
-	public void modificarCochePorId(Coche coche)throws SQLException{
+	public void modificarCochePorId(Coche coche){
 		String query = "UPDATE coches SET MARCA=?,MODELO=?,TIPOMOTOR=?,KM=?"
 				+ "WHERE ID=?";
 		try(Connection conn = conectarBaseDeDatos();
@@ -75,7 +80,7 @@ public class Dao {
 			System.out.println(e.getMessage());
 		}
 	}
-	public Coche buscarCochePorId(int id)throws SQLException{
+	public Coche buscarCochePorId(int id){
 		String query = "SELECT * FROM coches WHERE ID=?";
 		Coche coche = null;
 		try(Connection conn = conectarBaseDeDatos();
@@ -100,7 +105,7 @@ public class Dao {
 		    
 		    return coche;  
 }
-	public void buscarCochePorMarca(String marca)throws SQLException{
+	public void buscarCochePorMarca(String marca){
 		String query = "SELECT * FROM coches WHERE MARCA=?";
 		try(Connection conn = conectarBaseDeDatos();
 			PreparedStatement stmt = conn.prepareStatement(query)){
@@ -126,7 +131,7 @@ public class Dao {
 			System.out.println(e.getMessage());
 		}
 	}
-	public ArrayList<Coche> listarCoches()throws SQLException{
+	public ArrayList<Coche> listarCoches(){
 		String query = "SELECT * FROM coches ";
 		ArrayList<Coche>listaCoches = new ArrayList<>();
 		try(Connection conn = conectarBaseDeDatos();

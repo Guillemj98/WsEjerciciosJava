@@ -11,7 +11,7 @@ public class Cola {
 	private Queue<Email>cola = new LinkedList<>();
 	
 	
-	public synchronized void AddEmail(Email email) {
+	public synchronized void addEmail(Email email) {
 		
 		while(cola.size()== MAX_ELEMENT) {
 			

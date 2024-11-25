@@ -50,6 +50,7 @@ public class Interfaz {
 			System.out.println("║ 4. 🔍 Buscar coche por ID                ║");
 			System.out.println("║ 5. 🔍 Buscar coches por marca            ║");
 			System.out.println("║ 6. 📋 Listar todos los coches            ║");
+			System.out.println("║ 7. 🚶 Gestion Pasajeros                  ║");
 			System.out.println("║ 0. ❌ Salir de la aplicación             ║");
 			System.out.println("╚══════════════════════════════════════════╝");
 			System.out.print("Seleccione una opción: ");
@@ -149,7 +150,7 @@ public class Interfaz {
 	        System.out.print("Introduce el nuevo modelo: ");
 	        String modelo = sc.nextLine();
 	        
-	        System.out.print("Introduce el nuevo tipo de motor: ");
+	        System.out.print("Introduce el nuevo año de fabricacion: ");
 	        String tipoMotor = sc.nextLine();
 	        
 	        System.out.print("Introduce el nuevo número de kilómetros: ");
@@ -181,20 +182,16 @@ public class Interfaz {
 
 	private static void darDeAltaCoche() {
 		System.out.println("📌 Has elegido insertar un coche en la base de datos.\n");
-
-		System.out.print("🔹 Introduce el ID del coche: ");
-		int id = sc.nextInt();
-		sc.nextLine(); 
 		System.out.print("🔹 Introduce la marca del coche: ");
 		String marca = sc.nextLine();
 		System.out.print("🔹 Introduce el modelo del coche: ");
 		String modelo = sc.nextLine();
 		System.out.print("🔹 Introduce el tipo de motor del coche: ");
 		String motor = sc.nextLine();
-		System.out.print("🔹 Introduce el número de kilómetros que tiene el coche: ");
+		System.out.print("🔹 Introduce el año de fabricación que tiene el coche: ");
 		double km = sc.nextDouble();
 		System.out.println("\n✅ Coche insertado con éxito.\n");
-		Coche coche = new Coche(id, marca, modelo, motor, km);
+		Coche coche = new Coche( marca, modelo, motor, km);
 		
 		try {
 			gestor.guardarCoche(coche);

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import entidad.Coche;
 
-public interface DaoInterfaz {
+public interface DaoCoche {
 	public void insertarCoches(Coche coche)  ;
 	public void darDeBajaPorId(int id)  ;
 	public void modificarCochePorId(Coche coche)  ;

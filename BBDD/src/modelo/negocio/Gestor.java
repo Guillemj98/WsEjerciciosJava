@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import entidad.Coche;
-import modelo.persitencia.Dao;
+import modelo.persitencia.DaoCoche;
 
 public class Gestor {
 	private static Gestor instance = null;
@@ -22,7 +22,7 @@ public class Gestor {
 		// Al hacer el dao singletone debemos hacer esto para
 		// podeer usar los metodos del dao, es decir, no usamos
 		// la palabra reservada NEW.
-		Dao dao = Dao.getInstance();
+		DaoCoche dao = DaoCoche.getInstance();
 		// Invocamos el metodo que inserta el coche con la BBDD
 		dao.insertarCoches(coche);
 		
@@ -42,7 +42,7 @@ public class Gestor {
 		if(coche.getModelo() == null || coche.getMarca().isEmpty()) {
 			System.out.println("El modelo no puede ser null o estar vacío");
 		}
-		if(coche.getTipoMotor() == null || coche.getMarca().isEmpty()) {
+		if(coche.getAñoFabricacion() == null || coche.getMarca().isEmpty()) {
 			System.out.println("El tipo motor no puede ser null o estar vacío");
 		}
 		if(coche.getKm() < 0 ) {
@@ -51,21 +51,16 @@ public class Gestor {
 	
 	}
 	public void darDebajaCoche(int id) {
-		Dao dao = Dao.getInstance();
-		try {
-			dao.darDeBajaPorId(id);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		DaoCoche dao = DaoCoche.getInstance();
+		dao.darDeBajaPorId(id);
 	}
 	public void modificarCoche(int id, String marca, String modelo, String tipoMotor, double km) throws SQLException {
-		Dao dao = Dao.getInstance();
+		DaoCoche dao = DaoCoche.getInstance();
 		Coche coche = dao.buscarCochePorId(id);
 		if (coche != null) {
 	        coche.setMarca(marca);
 	        coche.setModelo(modelo);
-	        coche.setTipoMotor(tipoMotor);
+	        coche.setAñoFabricacion(tipoMotor);
 	        coche.setKm(km);
 	        
 	        dao.modificarCochePorId(coche);  
@@ -75,7 +70,7 @@ public class Gestor {
 	    }
 	}
 	public Coche buscarCocheId(int id) {
-		Dao dao = Dao.getInstance();
+		DaoCoche dao = DaoCoche.getInstance();
 		
 		try {
 			return dao.buscarCochePorId(id);
@@ -85,7 +80,7 @@ public class Gestor {
 		return null;
 	}
 	public void buscarCocheMarca(String marca) {
-		Dao dao = Dao.getInstance();
+		DaoCoche dao = DaoCoche.getInstance();
 		try {
 			dao.buscarCochePorMarca(marca);
 		}catch (Exception e) {
@@ -93,7 +88,7 @@ public class Gestor {
 		}
 	}
 	public ArrayList<Coche>listarCoches(){
-		Dao dao = Dao.getInstance();
+		DaoCoche dao = DaoCoche.getInstance();
 		try {
 			return dao.listarCoches();
 			

@@ -21,7 +21,7 @@ public class ProductorEmails extends Thread {
 			System.out.println("📧 ID del email: " + email.getId());
 			System.out.println("================================");
 			
-			cola.AddEmail(email);
+			cola.addEmail(email);
 
             try {
                 Thread.sleep(500); 

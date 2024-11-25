@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entidad.Coche;
-import modelo.persistencia.interfaz.DaoInterfaz;
+import modelo.persistencia.interfaz.DaoCoche;
 
-public class Dao implements DaoInterfaz{
-	private static Dao instance = null;
+public class Dao implements DaoCoche{
+	private static DaoCoche instance = null;
 	private final String url ="jdbc:mysql://localhost:3306/db_coches";
 	private final String user = "root";
 	private final String pass ="";
@@ -20,7 +20,7 @@ public class Dao implements DaoInterfaz{
 	private Dao() {
 		
 	}
-	public static Dao getInstance() {
+	public static DaoCoche getInstance() {
 		if(instance == null) {
 			instance = new Dao();
 		}
@@ -39,7 +39,7 @@ public class Dao implements DaoInterfaz{
 			stmt.setInt(1, coche.getId());
 			stmt.setString(2, coche.getMarca());
 			stmt.setString(3, coche.getModelo());
-			stmt.setString(4, coche.getTipoMotor());
+			stmt.setString(4, coche.getAñoFabricacion());
 			stmt.setDouble(5, coche.getKm());
 			
 			
@@ -68,7 +68,7 @@ public class Dao implements DaoInterfaz{
 			PreparedStatement stmt = conn.prepareStatement(query)){
 			stmt.setString(1, coche.getMarca());
 			stmt.setString(2, coche.getModelo());
-			stmt.setString(3, coche.getTipoMotor());
+			stmt.setString(3, coche.getAñoFabricacion());
 			stmt.setDouble(4, coche.getKm());
 			stmt.setInt(5, coche.getId());
 			
@@ -89,8 +89,7 @@ public class Dao implements DaoInterfaz{
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			 if (rs.next()) {
-				 coche = new Coche(
-		                rs.getInt("ID"),
+				 coche = new Coche(               
 		                rs.getString("MARCA"),
 		                rs.getString("MODELO"),
 		                rs.getString("TIPOMOTOR"),
@@ -143,9 +142,9 @@ public class Dao implements DaoInterfaz{
 				String marca = rs.getString("MARCA");
 				String modelo = rs.getString("MODELO");
 				String tipoMotor = rs.getString("TIPOMOTOR");
-				double Km = rs.getDouble("KM");
+				double km = rs.getDouble("KM");
 				
-				Coche coche = new Coche(id, marca, modelo, tipoMotor, Km);
+				Coche coche = new Coche(marca, modelo, tipoMotor, km);
 				listaCoches.add(coche);
 				
 			}

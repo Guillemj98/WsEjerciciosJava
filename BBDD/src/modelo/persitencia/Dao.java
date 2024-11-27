@@ -12,7 +12,7 @@ import entidad.Coche;
 import modelo.persistencia.interfaz.DaoCoche;
 
 public class Dao implements DaoCoche{
-	private static DaoCoche instance = null;
+	private static Dao instance = null;
 	private final String url ="jdbc:mysql://localhost:3306/db_coches";
 	private final String user = "root";
 	private final String pass ="";
@@ -20,7 +20,7 @@ public class Dao implements DaoCoche{
 	private Dao() {
 		
 	}
-	public static DaoCoche getInstance() {
+	public static Dao getInstance() {
 		if(instance == null) {
 			instance = new Dao();
 		}

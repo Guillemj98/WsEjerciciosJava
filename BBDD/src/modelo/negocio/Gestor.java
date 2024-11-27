@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import entidad.Coche;
+import modelo.persitencia.Dao;
 import modelo.persitencia.DaoCoche;
 
 public class Gestor {
@@ -22,7 +23,7 @@ public class Gestor {
 		// Al hacer el dao singletone debemos hacer esto para
 		// podeer usar los metodos del dao, es decir, no usamos
 		// la palabra reservada NEW.
-		DaoCoche dao = DaoCoche.getInstance();
+		Dao dao =  Dao.getInstance();
 		// Invocamos el metodo que inserta el coche con la BBDD
 		dao.insertarCoches(coche);
 		
@@ -51,11 +52,11 @@ public class Gestor {
 	
 	}
 	public void darDebajaCoche(int id) {
-		DaoCoche dao = DaoCoche.getInstance();
+		Dao dao = Dao.getInstance();
 		dao.darDeBajaPorId(id);
 	}
 	public void modificarCoche(int id, String marca, String modelo, String tipoMotor, double km) throws SQLException {
-		DaoCoche dao = DaoCoche.getInstance();
+		Dao dao = Dao.getInstance();
 		Coche coche = dao.buscarCochePorId(id);
 		if (coche != null) {
 	        coche.setMarca(marca);
@@ -70,7 +71,7 @@ public class Gestor {
 	    }
 	}
 	public Coche buscarCocheId(int id) {
-		DaoCoche dao = DaoCoche.getInstance();
+		Dao dao = Dao.getInstance();
 		
 		try {
 			return dao.buscarCochePorId(id);
@@ -80,7 +81,7 @@ public class Gestor {
 		return null;
 	}
 	public void buscarCocheMarca(String marca) {
-		DaoCoche dao = DaoCoche.getInstance();
+		Dao dao = Dao.getInstance();
 		try {
 			dao.buscarCochePorMarca(marca);
 		}catch (Exception e) {
@@ -88,7 +89,7 @@ public class Gestor {
 		}
 	}
 	public ArrayList<Coche>listarCoches(){
-		DaoCoche dao = DaoCoche.getInstance();
+		Dao dao = Dao.getInstance();
 		try {
 			return dao.listarCoches();
 			

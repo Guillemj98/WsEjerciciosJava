@@ -150,22 +150,27 @@ public class DaoPasajeroMySQL implements DaoPasajero {
 	}
 
 	@Override
-	public Integer borrarPasajeroCoche(int pasajeroID, int cocheID) {
-		Integer resultado = 0;
-		try(Connection conn = DriverManager.getConnection(url,user,password);){
-			String query = "UPDATE pasajeros SET coche_id=NULL WHERE id =? AND id_coche=?";
+	public Integer borrarPasajeroCoche(int pasajeroID) {
+		Integer result = null;
+
+		try (Connection conn = DriverManager.getConnection(url, user, password);) {
+
+			String query = "UPDATE pasajeros SET id_coche=? WHERE id=?";
 			PreparedStatement ps = conn.prepareStatement(query);
-			int rows = ps.executeUpdate();
-			
-			if(rows !=0) {
-				resultado = rows;		
-			}
-		
+			ps.setNull(1, java.sql.Types.INTEGER);
+			ps.setInt(2, pasajeroID);
+			result = (ps.executeUpdate() > 0) ? 0 : 1;
+			/*
+			 * Hay que revisar este método porque no valido si existe coche y/o pasajero y
+			 * entonces no estoy cumpliendo con las opciones de return de la interfaz
+			 */
+
 		} catch (SQLException e) {
-			resultado = null;
+			result = null;
 			e.printStackTrace();
 		}
-		return resultado;
+
+		return result;
 		
 	}
 

@@ -59,7 +59,7 @@ public interface DaoPasajero {
 	 * @return numero de filas que se han modificado, 0 si no se ha modificado ninguna,
 	 * y null en caso de que el ID del coche o el pasajero no se encuentre
 	 */
-	Integer borrarPasajeroCoche(int pasajeroID, int cocheID);
+	Integer borrarPasajeroCoche(int pasajeroID);
 	
 	/**
 	 * Metodo que devuelve una lista de pasajero asociados a un coche mediante su ID

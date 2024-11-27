@@ -7,7 +7,7 @@ import modelo.persistencia.DaoCocheMySQL;
 
 public class GestorCoche {
 	public static GestorCoche instance = null;
-	private DaoCocheMySQL daoCoche;
+	public static DaoCocheMySQL daoCoche;
 	
 	
 	
@@ -18,6 +18,7 @@ public class GestorCoche {
 		}
 		return instance;
 	}
+	
 	
 
 	/**
@@ -67,7 +68,7 @@ public class GestorCoche {
 	 *         ocurre una SQLException
 	 */
 	public Integer insert(Coche c) {
-		return daoCoche.insert(c);
+		return DaoCocheMySQL.getInstance().guardar(c);
 	}
 
 	/**
@@ -79,7 +80,7 @@ public class GestorCoche {
 	 *         si ocurre una SQLException
 	 */
 	public Integer deleteById(int id) {
-		return daoCoche.borrarById(id);
+		return DaoCocheMySQL.getInstance().borrarById(id);
 	}
 
 	/**
@@ -91,7 +92,7 @@ public class GestorCoche {
 	 *         null si ocurre una SQLException
 	 */
 	public Integer updateById(Coche c) {
-		return daoCoche.modificarById(c);
+		return DaoCocheMySQL.getInstance().modificarById(c);
 	}
 
 	/**
@@ -102,7 +103,7 @@ public class GestorCoche {
 	 *         SQLException
 	 */
 	public Coche selectById(int id) {
-		return daoCoche.seleccionarById(id);
+		return DaoCocheMySQL.getInstance().seleccionarById(id);
 	}
 
 	/**
@@ -114,7 +115,7 @@ public class GestorCoche {
 	 *         se encuentran coincidencias
 	 */
 	public List<Coche> selectByMarca(String marca) {
-		return daoCoche.seleccionarByMarca(marca);
+		return DaoCocheMySQL.getInstance().seleccionarByMarca(marca);
 	}
 
 	/**
@@ -123,6 +124,6 @@ public class GestorCoche {
 	 * @return una lista con todos los coches de la base de datos
 	 */
 	public List<Coche> selectAll() {
-		return daoCoche.mostraCoches();
+		return DaoCocheMySQL.getInstance().mostraCoches();
 	}
 }

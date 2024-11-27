@@ -26,7 +26,7 @@ public class DaoCocheMySQL implements DaoCoche {
 	private String password = AppConfig.getInstance().getProperty("password");
 	
 	// Para poder hacerlo singletone
-	public static DaoCocheMySQL instance = null;
+	public static DaoCocheMySQL instance ;
 	
 	// Añadimos el contructor vacio
 	public DaoCocheMySQL() {
@@ -48,13 +48,13 @@ public class DaoCocheMySQL implements DaoCoche {
 		return instance;
 	}
 	@Override
-	public Integer insert(Coche c) {
+	public Integer guardar(Coche c) {
 		Integer resultado = 0;
 		// Conexion con la BBDD 
 		try(Connection conn = DriverManager.getConnection(url, user, password);){
 			
 			// Establecemos la query 
-			String query = "INSERT INTO coches (MARCA, MODELO, MOTOR, KILOMETROS) VALUES (?, ?, ?, ?)";
+			String query = "INSERT INTO coche (MARCA, MODELO, TIPO_MOTOR, KILOMETROS) VALUES (?, ?, ?, ?)";
 			// Para que sea seguro usamos el preparedStatement 
 			PreparedStatement ps = conn.prepareStatement(query);
 			// Las posiciones empiezan por el 1
@@ -70,6 +70,7 @@ public class DaoCocheMySQL implements DaoCoche {
 			}
 			
 		}catch (Exception e) {
+			e.printStackTrace();
 			resultado = null;
 		}
 		return resultado;
@@ -79,7 +80,7 @@ public class DaoCocheMySQL implements DaoCoche {
 		Integer resultado =0;
 		
 		try(Connection conn = DriverManager.getConnection(url, user, password);){
-			String query = "DELETE FROM coches WHERE id =?";
+			String query = "DELETE FROM coche WHERE id =?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
 			
@@ -99,7 +100,7 @@ public class DaoCocheMySQL implements DaoCoche {
 	public Integer modificarById(Coche c) {
 		Integer resultado = 0;
 		try(Connection conn= DriverManager.getConnection(url, user, password);){
-			String query ="UPDATE coches SET marca = ?, modelo = ?, motor = ?, kilometros = ? WHERE id=?";
+			String query ="UPDATE coche SET marca = ?, modelo = ?, TIPO_MOTOR = ?, kilometros = ? WHERE id=?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, c.getMarca().toUpperCase());
 			ps.setString(2, c.getModelo().toUpperCase());
@@ -123,7 +124,7 @@ public class DaoCocheMySQL implements DaoCoche {
 	public Coche seleccionarById(int id) {
 		List<Coche>listaCoches = new ArrayList<Coche>();
 		try(Connection conn = DriverManager.getConnection(url, user, password);){
-			String query = 	"SELECT * FROM coches WHERE id =?";		
+			String query = 	"SELECT * FROM coche WHERE id =?";		
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
 			
@@ -147,7 +148,7 @@ public class DaoCocheMySQL implements DaoCoche {
 
 		try (Connection conn = DriverManager.getConnection(url, user, password);) {
 
-			String query = "SELECT * FROM coches WHERE marca =?";
+			String query = "SELECT * FROM coche WHERE marca =?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, marca);
 			listaCoches = resultSetHandler(ps);
@@ -164,7 +165,7 @@ public class DaoCocheMySQL implements DaoCoche {
 		List<Coche> listaCoches = new ArrayList<Coche>();
 		try(Connection conn = DriverManager.getConnection(url, user, password);){
 			
-			String query = "SELECT * FROM coches";
+			String query = "SELECT * FROM coche";
 			PreparedStatement ps = conn.prepareStatement(query);
 			listaCoches = resultSetHandler(ps);
 			

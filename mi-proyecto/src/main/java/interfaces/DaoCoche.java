@@ -12,7 +12,7 @@ public interface DaoCoche {
 	 * @return numero de filas modificadas, 0 si no ha sido añadido ninguna
 	 * y null si ocurre alguna excepcion MySQL
 	 */
-	public Integer insert(Coche c);
+	public Integer guardar(Coche c);
 
 	/**
 	 * Metodo que elimina un coche de la base de datos a partir de su ID

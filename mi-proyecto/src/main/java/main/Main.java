@@ -1,9 +1,11 @@
 package main;
 
+import modelo.interfaz.Inrterfaz;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Inrterfaz.getInstance().runApp();
 
 	}
 

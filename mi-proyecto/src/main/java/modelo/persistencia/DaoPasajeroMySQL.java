@@ -131,20 +131,63 @@ public class DaoPasajeroMySQL implements DaoPasajero {
 
 	@Override
 	public Integer addPasajeroCoche(int pasajeroID, int cocheID) {
-		// TODO Auto-generated method stub
-		return null;
+		Integer resultado = 0;
+		try(Connection conn = DriverManager.getConnection(url,user,password);){
+			String query = "UPDATE pasajeros SET coche_id=?WHERE id =?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			int rows = ps.executeUpdate();
+			
+			if(rows !=0) {
+				resultado = rows;
+			
+			}
+		
+		} catch (SQLException e) {
+			resultado = null;
+			e.printStackTrace();
+		}
+		return resultado;
 	}
 
 	@Override
 	public Integer borrarPasajeroCoche(int pasajeroID, int cocheID) {
-		// TODO Auto-generated method stub
-		return null;
+		Integer resultado = 0;
+		try(Connection conn = DriverManager.getConnection(url,user,password);){
+			String query = "UPDATE pasajeros SET coche_id=NULL WHERE id =? AND id_coche=?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			int rows = ps.executeUpdate();
+			
+			if(rows !=0) {
+				resultado = rows;		
+			}
+		
+		} catch (SQLException e) {
+			resultado = null;
+			e.printStackTrace();
+		}
+		return resultado;
+		
 	}
 
 	@Override
-	public List<Pasajero> listPasajeroFromCoche(int carID) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Pasajero> listPasajeroFromCoche(int cocheID) {
+		List<Pasajero>listaPasajeros = new ArrayList<Pasajero>();
+		try(Connection conn = DriverManager.getConnection(url,user,password);){
+			String query = "SELECT * pasajero WHERE id_coche=?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, cocheID);
+			listaPasajeros = resultSetHandler(ps);
+			resultSetHandler(ps);
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		if(listaPasajeros.size()==0) {
+			return null;
+		}
+		
+		return listaPasajeros;
 	}
 	
 	private List<Pasajero> resultSetHandler(PreparedStatement ps) {

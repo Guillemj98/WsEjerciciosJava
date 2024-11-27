@@ -79,5 +79,14 @@ public class GestorPasajero {
 		
 		return daoPasajero.listPasajeros();
 	}
+	public Integer addPasajeroCoche(int pasajerId, int cocheId) {
+		return daoPasajero.addPasajeroCoche(pasajerId, cocheId);
+	}
+	public Integer borrarPasajeroCoche(int pasajeroID, int cocheID) {
+		return daoPasajero.borrarPasajeroCoche(pasajeroID, cocheID);
+	}
+	public List<Pasajero>listaPasajerosDelCoche(int cocheID){
+		return daoPasajero.listPasajeroFromCoche(cocheID);
+	}
 
 }

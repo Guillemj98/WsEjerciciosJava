@@ -47,10 +47,8 @@ public interface DaoPasajero {
 	 * y coche
 	 * @param pasajeroID id del pasajero que se quiere añadir al coche
 	 * @param cocheID id del coche en el cual se quiere meter el pasajero
-	 * @return 0 en caso de que se haya añadido correctamente el pasajero 
-	 * al coche, 1 en caso de que no se haya añadido por no encontrar dicho pasajero
-	 * 2 en caso de que no se haya encontrado dicho coche
-	 * null een caso de que haya ocurrdio alguna excepcion de tipo I/O
+	 * @return numero de filas que se han modificado, 0 si no se ha modificado ninguna,
+	 * y null en caso de que el ID del coche o el pasajero no se encuentre
 	 */
 	Integer addPasajeroCoche(int pasajeroID, int cocheID);
 	
@@ -58,10 +56,8 @@ public interface DaoPasajero {
 	 * Metodo que borra un pasajero de un coche en la persistencia
 	 * @param pasajeroID el ID del pasajero del cual se quiere elimanar del coche
 	 * @param cocheID  el ID del coche donde se encuentra el pasajero que se desea eliminar
-	 * @return 0 en caso de que se haya eliminado correctamente, 
-	 * 1 en caso de que no se haya eliminado por no haberse encontrado al pasajero,
-	 * 2 en caso de que no se haya eliminado por no haberse encontrado al coche,
-	 * null en caso de que haya ocurrido alguna excepción de I/O
+	 * @return numero de filas que se han modificado, 0 si no se ha modificado ninguna,
+	 * y null en caso de que el ID del coche o el pasajero no se encuentre
 	 */
 	Integer borrarPasajeroCoche(int pasajeroID, int cocheID);
 	

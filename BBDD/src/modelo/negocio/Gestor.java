@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import entidad.Coche;
 import modelo.persitencia.Dao;
-import modelo.persitencia.DaoCoche;
+
 
 public class Gestor {
 	private static Gestor instance = null;

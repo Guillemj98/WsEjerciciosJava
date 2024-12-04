@@ -135,6 +135,9 @@ public class DaoPasajeroMySQL implements DaoPasajero {
 		try(Connection conn = DriverManager.getConnection(url,user,password);){
 			String query = "UPDATE pasajeros SET coche_id=?WHERE id =?";
 			PreparedStatement ps = conn.prepareStatement(query);
+			
+			ps.setInt(1, cocheID);
+			ps.setInt(2, pasajeroID);
 			int rows = ps.executeUpdate();
 			
 			if(rows !=0) {
@@ -198,6 +201,7 @@ public class DaoPasajeroMySQL implements DaoPasajero {
 	private List<Pasajero> resultSetHandler(PreparedStatement ps) {
 
 		List<Pasajero> listaPasajero = new ArrayList<>();
+		
 		Pasajero pasajero = null;
 
 		try {

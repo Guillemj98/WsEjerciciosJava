@@ -18,7 +18,7 @@ public interface DaoVideojuego extends JpaRepository<Videojuego, Integer> {
 	 * deleteByID()para eliminar un registro por su ID
 	 */
 	
-	public Boolean  ifindByName(String nombre);
-	public Videojuego  findByName(String nombre);
+	
+	public abstract Videojuego  findByName(String name);
 	
 }

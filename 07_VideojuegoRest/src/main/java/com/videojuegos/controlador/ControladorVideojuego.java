@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.videojuegos.entidad.Videojuego;
@@ -18,12 +19,13 @@ import com.videojuegos.negocio.NegocioVideojuego;
 
 @RestController
 @CrossOrigin(origins ="*")
+@RequestMapping("/videojuegos")
 public class ControladorVideojuego {
 	@Autowired
 	private NegocioVideojuego negocioVideojuego;
 	
 	
-	 @PostMapping
+	 @PostMapping()
 	    public Videojuego darDeAlta(@RequestBody Videojuego videojuego) {
 	        return negocioVideojuego.guardar(videojuego);
 	    }
@@ -44,7 +46,7 @@ public class ControladorVideojuego {
 	        return negocioVideojuego.obtenerVideojuegoId(id);
 	    }
 
-	    @GetMapping
+	    @GetMapping()
 	    public List<Videojuego> listarTodos() {
 	        return negocioVideojuego.obtenerTodos();
 	    }

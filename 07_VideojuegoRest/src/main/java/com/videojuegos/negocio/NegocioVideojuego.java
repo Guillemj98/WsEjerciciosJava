@@ -16,10 +16,15 @@ public class NegocioVideojuego {
 	private DaoVideojuego daoVideojuego;
 	
 	public Videojuego guardar(Videojuego videojuego) {
-		if(daoVideojuego.ifindByName(videojuego.getName())) {
-			System.out.println("Juego con el mismo nombre");
+		Videojuego videojuego2 = daoVideojuego.findByName(videojuego.getName());
+		if(videojuego2!= null) {
+		if(videojuego2.getName().equals(videojuego.getName())) {
+			return null;
 		}
-		return daoVideojuego.save(videojuego);
+		}
+			return daoVideojuego.save(videojuego);
+		
+		
 	}
 	public void eliminar(int id) {
 		daoVideojuego.deleteById(id);

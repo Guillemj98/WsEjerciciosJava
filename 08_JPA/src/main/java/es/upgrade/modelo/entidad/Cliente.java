@@ -1,6 +1,5 @@
 package es.upgrade.modelo.entidad;
 
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -9,29 +8,25 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name="autores")
-public class Autor {
-	
-	public Autor(String string, String string2, Date date) {
-		
-	}
-
+@Table(name="clientes")
+@Data
+public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
-	private String apellidos;
-	@Temporal(TemporalType.DATE)
-	private Date fechaNacimiento;
+	private String telefono;
 	
-	@OneToMany(mappedBy = "autor", cascade = CascadeType.PERSIST)
-	private List<Libro>listaLibros;
+	@OneToOne(mappedBy = "cliente", cascade = CascadeType.PERSIST)
+	private DatosBancario datosBancario;
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST)
+	private List<Coche>listaCoches;
+	private List<Lunar>listaLunares;
 
 }

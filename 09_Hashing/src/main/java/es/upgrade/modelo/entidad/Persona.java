@@ -17,6 +17,6 @@ public class Persona {
 	private Integer id;
 	@Column(unique = true)
 	private String nombre;
-	private String passsword;
+	private String password;
 
 }

@@ -51,7 +51,8 @@ public class ControladorVideojuego {
 	        return negocioVideojuego.obtenerTodos();
 	    }
 
-	    @GetMapping("/nombre/{nombre}")
+	    @SuppressWarnings("unchecked")
+		@GetMapping("/nombre/{nombre}")
 	    public List<Videojuego> listarPorNombre(@PathVariable String nombre) {
 	        return (List<Videojuego>) negocioVideojuego.obtenerPorNombre(nombre);
 	    }

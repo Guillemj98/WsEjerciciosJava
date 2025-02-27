@@ -41,7 +41,8 @@ public class DaoUsuario {
 		// falta abrir un entorno de transaccionalidad
 		// Estamos creando una consulta mediante JPQL p en minuscula es el alias
 		// para referirse a la persona
-		return em.createQuery("SELECT p FROM personas p WHERE p.nombre = :name", Persona.class)
+		// El singleResult da errores mejores 
+		return em.createQuery("SELECT p FROM personas p WHERE p.nombre = :nombre", Persona.class)
 				.setParameter("nombre", name)
 				.getSingleResult();
 	}

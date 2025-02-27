@@ -29,7 +29,7 @@ public class Libreria {
 	private String nombreDueño;
 	private String direccion;
 	
-	@ManyToMany(mappedBy = "listaLibrerias", cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(
 			name="libreria_libro",
 			joinColumns = @JoinColumn(name="libreria_id"),
